@@ -1,4 +1,4 @@
-# react-native-legos
+# React Native Legos
 ## A design system, and component kit to get you jamming on new UI quicker 🎸
 This repo is welcoming to all UI components that can help get you jamming on the UI of your RN app.
 
