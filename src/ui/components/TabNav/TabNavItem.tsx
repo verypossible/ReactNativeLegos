@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components/native';
+import React from 'react'
+import styled from 'styled-components/native'
 
 interface TabNavItemProps {
-  label?: string;
-  active?: boolean;
-  fontStyle?: any;
-  style?: any;
+  label?: string
+  active?: boolean
+  fontStyle?: any
+  style?: any
 }
 
 const Layout = styled.View`
@@ -13,12 +13,12 @@ const Layout = styled.View`
   justify-content: center;
   align-items: center;
   height: 100%;
-`;
+`
 
 const Label = styled.Text`
   color: black;
-  opacity: ${({active}: TabNavItemProps) => (active ? 1 : 0.5)};
-`;
+  opacity: ${({ active }: TabNavItemProps) => (active ? 1 : 0.5)};
+`
 
 const TabNavItem: React.FC<TabNavItemProps> = ({
   label,
@@ -32,7 +32,7 @@ const TabNavItem: React.FC<TabNavItemProps> = ({
         {label}
       </Label>
     </Layout>
-  );
-};
+  )
+}
 
-export default TabNavItem;
+export default TabNavItem

@@ -56,7 +56,7 @@ const HeaderAccessory: React.FC<HeaderAccessoryProps> = ({
     <AccessoryWrap
       position={position}
       onPress={onPress}
-      activeOpacity={theme.button.touchOpacity}
+      activeOpacity={theme.button.activeOpacity}
       style={style}
     >
       {icon ? (

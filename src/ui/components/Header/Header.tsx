@@ -7,8 +7,8 @@ import theme from 'ui/theme'
 interface HeaderProps {
   backgroundColor?: any
   barStyle?: 'dark-content' | 'light-content'
-  style?: any
   children?: React.ReactNode
+  style?: any
 }
 
 const SafetyWrap = styled.SafeAreaView`
@@ -43,8 +43,8 @@ const HeaderGuts = styled.View`
 const Header: React.FC<HeaderProps> = ({
   backgroundColor,
   barStyle = 'dark-content',
-  style,
   children,
+  style,
 }) => (
   <React.Fragment>
     <StatusBar barStyle={barStyle} />

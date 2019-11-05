@@ -1,27 +1,27 @@
-import React from 'react';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
+import React from 'react'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
 
-import {TabNavItem} from 'ui/components';
-import {Doggies, Kitties} from 'ui/screens';
+import { TabNavItem } from 'ui/components'
+import { HomeTabOne, HomeTabTwo } from 'ui/screens'
 
 const Routes = {
-  Doggies: {
-    screen: Doggies,
+  TabOne: {
+    screen: HomeTabOne,
     navigationOptions: {
-      tabBarIcon: ({focused}: {focused: boolean}) => (
-        <TabNavItem label="🐕" active={focused} fontStyle={{fontSize: 20}} />
+      tabBarIcon: ({ focused }: { focused: boolean }) => (
+        <TabNavItem label="TabOne" active={focused} />
       ),
     },
   },
-  Kitties: {
-    screen: Kitties,
+  TabTwo: {
+    screen: HomeTabTwo,
     navigationOptions: {
-      tabBarIcon: ({focused}: {focused: boolean}) => (
-        <TabNavItem label="🐈" active={focused} fontStyle={{fontSize: 20}} />
+      tabBarIcon: ({ focused }: { focused: boolean }) => (
+        <TabNavItem label="TabTwo" active={focused} />
       ),
     },
   },
-};
+}
 
 const TabBarConfig = {
   animationEnabled: true,
@@ -33,8 +33,8 @@ const TabBarConfig = {
       backgroundColor: 'white',
     },
   },
-};
+}
 
-const AppTabNav = createBottomTabNavigator(Routes, TabBarConfig);
+const AppTabNav = createBottomTabNavigator(Routes, TabBarConfig)
 
-export default AppTabNav;
+export default AppTabNav
