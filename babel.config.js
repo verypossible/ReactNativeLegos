@@ -7,6 +7,7 @@ module.exports = {
       {
         root: ['./'],
         alias: {
+          '^@legos/(.+)': './src/packages/\\1',
           assets: './assets',
           ui: './src/ui',
         },
