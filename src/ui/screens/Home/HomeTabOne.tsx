@@ -1,14 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
-import { TouchableOpacity } from 'react-native'
-
 import {
   BottomSheet,
   Button,
-  Header,
-  HeaderAccessory,
-  HeaderTitle,
   Modal,
   ScreenContainer,
   ScreenContent,
@@ -25,33 +20,43 @@ const Layout = styled.View`
   align-items: center;
 `
 
-const DoggiesDetail: React.FC<Props> = ({ navigation }) => {
+const Home: React.FC<Props> = ({ navigation }) => {
   const [showActionSheet, setActionSheet] = useState<boolean>(false)
+  const [showModal, setModal] = useState<boolean>(false)
 
   return (
     <>
       <ScreenContainer>
-        <Header>
-          <HeaderAccessory
-            position="left"
-            icon="NavBack"
-            onPress={() => navigation.goBack()}
-          />
-          <HeaderTitle title="You pet the doggy!" />
-        </Header>
-
         <ScreenContent>
           <Layout>
-            <Text>🐶 woof woof woof 🐶</Text>
             <Button
-              size="small"
               type="border"
-              label="toggle"
+              size="small"
+              label="BottomSheet"
               onPress={() => setActionSheet(!showActionSheet)}
+              style={{
+                width: 150,
+                opacity: 0.25,
+              }}
+            />
+            <Button
+              type="border"
+              size="small"
+              label="Modal"
+              onPress={() => setModal(!showModal)}
+              style={{
+                width: 150,
+                marginTop: 20,
+                opacity: 0.25,
+              }}
             />
           </Layout>
         </ScreenContent>
       </ScreenContainer>
+
+      <Modal isVisible={showModal} closeModal={() => setModal(!showModal)}>
+        <Text>Modal</Text>
+      </Modal>
 
       <BottomSheet
         height={400}
@@ -65,4 +70,4 @@ const DoggiesDetail: React.FC<Props> = ({ navigation }) => {
   )
 }
 
-export default DoggiesDetail
+export default Home

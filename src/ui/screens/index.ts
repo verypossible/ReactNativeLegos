@@ -1,2 +1,1 @@
-export * from './Doggies';
-export * from './Kitties';
+export * from './Home'
