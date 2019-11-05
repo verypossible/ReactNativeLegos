@@ -1,3 +1,6 @@
+import { Dimensions } from 'react-native'
+const { height: SCREEN_HEIGHT, width: SCREEN_WIDTH } = Dimensions.get('window')
+
 const theme = {
   button: {
     height: {
@@ -22,6 +25,21 @@ const theme = {
       regular: 'Helvetica',
       bold: 'Helvetica-Bold',
     },
+  },
+
+  screen: {
+    height: SCREEN_HEIGHT,
+    width: SCREEN_WIDTH,
+  },
+
+  zIndex: {
+    actionSheet: {
+      content: 101,
+      overlay: 100,
+    },
+    header: 50,
+    modal: 100,
+    screen: 0,
   },
 }
 

@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { SafeAreaView, StatusBar, View } from 'react-native'
+import { StatusBar } from 'react-native'
+import theme from 'ui/theme'
 
 interface HeaderProps {
   backgroundColor?: any
@@ -10,12 +11,12 @@ interface HeaderProps {
   children?: React.ReactNode
 }
 
-const SafetyWrap = styled(SafeAreaView)`
+const SafetyWrap = styled.SafeAreaView`
   background-color: ${({ backgroundColor }: HeaderProps) =>
     backgroundColor ? backgroundColor : 'white'};
 `
 
-const Layout = styled(View)`
+const Layout = styled.View`
   flex-flow: column nowrap;
   justify-content: flex-end;
   align-items: center;
@@ -24,9 +25,10 @@ const Layout = styled(View)`
   margin: 0;
   padding: 0;
   position: relative;
+  z-index: ${theme.zIndex.header};
 `
 
-const HeaderGuts = styled(View)`
+const HeaderGuts = styled.View`
   align-self: flex-end;
   flex-flow: row nowrap;
   justify-content: space-between;

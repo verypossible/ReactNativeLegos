@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { View } from 'react-native'
+import theme from 'ui/theme'
 
 interface ScreenContainerProps {
   children: React.ReactNode
@@ -12,6 +13,7 @@ const Layout = styled(View)`
   width: 100%;
   height: 100%;
   position: relative;
+  z-index: ${theme.zIndex.screen};
   background: #dedede;
 `
 
