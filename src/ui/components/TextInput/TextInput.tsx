@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Spring } from 'react-spring/renderprops'
+import { animated, useSpring } from 'react-spring'
 import styled from 'styled-components/native'
 
 import {
@@ -44,6 +44,8 @@ const Label = styled(Text)`
   line-height: 15;
 `
 
+const AnimatedLabel = animated(Label)
+
 const Input = styled(NativeTextInput)`
   width: 100%;
   height: 100%;
@@ -66,18 +68,17 @@ const TextInput: React.FC<TextInputProps> = ({
   const [inputValue, onChangeText] = useState<string>('')
   const [isFocused, setIsFocused] = useState<boolean>(false)
   const isChanged = isFocused || inputValue.length >= 1
+  const labelAnimation = useSpring({
+    to: {
+      top: isChanged ? 10 : 23,
+      fontSize: isChanged ? 10 : 15,
+    },
+  })
 
   return (
     <Layout style={style}>
       <InnerContainer>
-        <Spring
-          to={{
-            top: isChanged ? 10 : 23,
-            fontSize: isChanged ? 10 : 15,
-          }}
-        >
-          {(props: any) => <Label style={props}>{label}</Label>}
-        </Spring>
+        <AnimatedLabel style={labelAnimation}>{label}</AnimatedLabel>
 
         <Input
           {...textInputProps}
