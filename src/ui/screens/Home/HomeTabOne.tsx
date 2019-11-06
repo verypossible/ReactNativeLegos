@@ -8,6 +8,7 @@ import {
   ScreenContainer,
   ScreenContent,
   Text,
+  TextInput,
 } from 'ui/components'
 
 interface Props {
@@ -50,6 +51,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
                 opacity: 0.25,
               }}
             />
+            <TextInput label="Label" keyboardType="default" />
           </Layout>
         </ScreenContent>
       </ScreenContainer>
