@@ -10,7 +10,6 @@ import { Text } from '../Typography'
 
 interface TextInputProps extends NativeTextInputProps {
   label?: string
-  value?: string
   error?: boolean
   disabled?: boolean
   ref?: any
@@ -32,8 +31,10 @@ const Layout = styled.View`
 
 const InnerContainer = styled.View`
   flex: 1;
+  width: 100%;
+  height: 100%;
   position: relative;
-  padding: 0px 10px;
+  margin: 0px 10px;
 `
 
 const Label = styled(Text)`
@@ -62,9 +63,9 @@ const TextInput: React.FC<TextInputProps> = ({
   ref,
   ...textInputProps
 }) => {
-  const [value, onChangeText] = useState<string>('')
+  const [inputValue, onChangeText] = useState<string>('')
   const [isFocused, setIsFocused] = useState<boolean>(false)
-  const isChanged = isFocused || value.length >= 1
+  const isChanged = isFocused || inputValue.length >= 1
 
   return (
     <Layout style={style}>
@@ -83,7 +84,6 @@ const TextInput: React.FC<TextInputProps> = ({
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           onChangeText={(text: any) => onChangeText(text)}
-          // value={value}
           ref={ref}
         />
       </InnerContainer>

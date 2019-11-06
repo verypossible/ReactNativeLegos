@@ -9,6 +9,7 @@ interface ButtonProps {
   type: 'border' | 'fill' | 'transparent'
   label: string
   width?: number
+  disabled?: boolean
   onPress?: () => void
   style?: any
 }
@@ -40,6 +41,7 @@ const Layout = styled(TouchableOpacity)`
   border-width: ${({ type }: ButtonProps) => (type === 'border' ? 1.25 : 0)};
   border-color: ${({ type }: ButtonProps) =>
     type === 'transparent' ? 'transparent' : 'black'};
+  opacity: ${({ disabled }: ButtonProps) => (disabled ? 0.25 : 1)};
 `
 
 const Label = styled(Text)`
@@ -56,6 +58,7 @@ const Button: React.FC<ButtonProps> = ({
   size,
   label,
   width,
+  disabled = false,
   onPress,
   style,
 }) => {
@@ -64,7 +67,8 @@ const Button: React.FC<ButtonProps> = ({
       type={type}
       size={size}
       width={width}
-      onPress={onPress}
+      disabled={disabled}
+      onPress={!disabled && onPress}
       activeOpacity={theme.button.activeOpacity}
       style={style}
     >
