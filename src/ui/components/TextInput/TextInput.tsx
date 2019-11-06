@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { Spring } from 'react-spring/renderprops'
 import styled from 'styled-components/native'
 
@@ -27,10 +27,17 @@ const Layout = styled.View`
   height: ${INPUTHEIGHT};
   position: relative;
   background: white;
+  overflow: hidden;
+`
+
+const InnerContainer = styled.View`
+  flex: 1;
+  position: relative;
+  padding: 0px 10px;
 `
 
 const Label = styled(Text)`
-  position: relative;
+  position: absolute;
   z-index: 2;
   font-size: 15;
   line-height: 15;
@@ -43,6 +50,7 @@ const Input = styled(NativeTextInput)`
   top: 0;
   left: 0;
   z-index: 1;
+  padding-top: 25;
   font-size: 15;
   line-height: 15;
 `
@@ -56,59 +64,31 @@ const TextInput: React.FC<TextInputProps> = ({
 }) => {
   const [value, onChangeText] = useState<string>('')
   const [isFocused, setIsFocused] = useState<boolean>(false)
+  const isChanged = isFocused || value.length >= 1
 
   return (
     <Layout style={style}>
-      <Spring
-        to={{ color: isFocused || value.length >= 1 ? 'yellow' : 'black' }}
-      >
-        {(props: any) => <Label style={props}>{label}</Label>}
-      </Spring>
+      <InnerContainer>
+        <Spring
+          to={{
+            top: isChanged ? 10 : 23,
+            fontSize: isChanged ? 10 : 15,
+          }}
+        >
+          {(props: any) => <Label style={props}>{label}</Label>}
+        </Spring>
 
-      <Input
-        {...textInputProps}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        onChangeText={(text: any) => onChangeText(text)}
-        value={value}
-        ref={ref}
-      />
+        <Input
+          {...textInputProps}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          onChangeText={(text: any) => onChangeText(text)}
+          // value={value}
+          ref={ref}
+        />
+      </InnerContainer>
     </Layout>
   )
 }
-
-// class TextInput extends Component<TextInputProps, TextInputState> {
-//   state = {
-//     isFocused: false,
-//   }
-
-//   onFocus = () => {
-//     this.setState({ isFocused: true })
-//   }
-
-//   onBlur = () => {
-//     this.setState({ isFocused: false })
-//   }
-
-//   render() {
-//     const { label, error = false, style, ref, ...textInputProps } = this.props
-//     const { isFocused } = this.state
-
-//     return (
-//       <Layout style={style}>
-//         <Spring to={{ color: isFocused ? 'yellow' : 'black' }}>
-//           {(props: any) => <Label style={props}>{label}</Label>}
-//         </Spring>
-
-//         <Input
-//           {...textInputProps}
-//           onFocus={this.onFocus}
-//           onBlur={this.onBlur}
-//           ref={ref}
-//         />
-//       </Layout>
-//     )
-//   }
-// }
 
 export default TextInput

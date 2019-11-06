@@ -51,7 +51,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
                 opacity: 0.25,
               }}
             />
-            <TextInput label="Label" keyboardType="default" />
+            <TextInput label="Input Label" keyboardType="default" />
           </Layout>
         </ScreenContent>
       </ScreenContainer>
