@@ -3,11 +3,12 @@ import { createStackNavigator } from 'react-navigation-stack'
 
 import AppTabNav from './AppTabNav'
 
-import { HomeDetail } from 'ui/screens'
+import { AuthLogin, HomeDetail } from 'ui/screens'
 
 // assign screen components to route name
 // every screen/stack defined here has the 'navigation: any' prop passed down to it
 const Routes = {
+  Auth: AuthLogin,
   Home: AppTabNav,
   HomeDetail,
 }
@@ -15,7 +16,7 @@ const Routes = {
 // create AppNavigator
 const AppNavigator = createStackNavigator(Routes, {
   // navigator config options
-  initialRouteName: 'Home',
+  initialRouteName: 'Auth',
   headerMode: 'none',
 })
 
