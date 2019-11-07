@@ -39,6 +39,7 @@ const theme = {
     },
     header: 50,
     modal: 100,
+    notification: 100,
     screen: 0,
   },
 }
