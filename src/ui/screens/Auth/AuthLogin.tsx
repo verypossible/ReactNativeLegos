@@ -53,7 +53,7 @@ const AuthLogin: React.FC<Props> = ({ navigation }) => {
             type="fill"
             size="default"
             label="Submit"
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('Demo')}
           />
         </Layout>
       </ScreenContent>

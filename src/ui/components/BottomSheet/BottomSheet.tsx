@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { animated, useTransition } from 'react-spring'
@@ -78,7 +78,7 @@ const BottomSheet: React.FC<BottomSheetProps> = ({
   })
 
   return (
-    <Fragment>
+    <>
       {sheetTransition.map(
         ({ item, key, props }: any) =>
           item && (
@@ -96,7 +96,7 @@ const BottomSheet: React.FC<BottomSheetProps> = ({
           ({ item, key, props }: any) =>
             item && <AnimatedOverlay key={key} style={props} />
         )}
-    </Fragment>
+    </>
   )
 }
 
