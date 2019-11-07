@@ -20,6 +20,7 @@ const Layout = styled.TouchableOpacity`
 const Label = styled(Text)`
   color: ${({ isActive }: HeaderTabItemProps) =>
     isActive ? 'green' : 'black'};
+  opacity: ${({ isActive }: HeaderTabItemProps) => (isActive ? 1 : 0.25)};
 `
 
 const HeaderTabItem: React.FC<HeaderTabItemProps> = ({

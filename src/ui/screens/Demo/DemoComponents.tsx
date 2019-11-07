@@ -4,6 +4,8 @@ import styled from 'styled-components/native'
 import {
   BottomSheet,
   Button,
+  Header,
+  HeaderTitle,
   Modal,
   Notification,
   ScreenContainer,
@@ -21,7 +23,12 @@ const Layout = styled.View`
   align-items: center;
 `
 
-const Home: React.FC<Props> = ({ navigation }) => {
+const DemoButton = styled(Button)`
+  width: 150;
+  margin-top: 15;
+`
+
+const DemoComponents: React.FC<Props> = ({ navigation }) => {
   const [showNotification, setNotification] = useState<boolean>(false)
   const [showActionSheet, setActionSheet] = useState<boolean>(false)
   const [showModal, setModal] = useState<boolean>(false)
@@ -29,39 +36,35 @@ const Home: React.FC<Props> = ({ navigation }) => {
   return (
     <>
       <ScreenContainer>
+        <Header backgroundColor="transparent">
+          <HeaderTitle title="Components" />
+        </Header>
+
         <ScreenContent>
           <Layout>
-            <Button
+            <DemoButton
+              type="border"
+              size="small"
+              label="Header w/ Tabs"
+              onPress={() => navigation.navigate('DemoHeaderTabs')}
+            />
+            <DemoButton
               type="border"
               size="small"
               label="Notification"
               onPress={() => setNotification(!showNotification)}
-              style={{
-                width: 150,
-                opacity: 0.25,
-              }}
             />
-            <Button
+            <DemoButton
               type="border"
               size="small"
               label="BottomSheet"
               onPress={() => setActionSheet(!showActionSheet)}
-              style={{
-                width: 150,
-                marginTop: 20,
-                opacity: 0.25,
-              }}
             />
-            <Button
+            <DemoButton
               type="border"
               size="small"
               label="Modal"
               onPress={() => setModal(!showModal)}
-              style={{
-                width: 150,
-                marginTop: 20,
-                opacity: 0.25,
-              }}
             />
           </Layout>
         </ScreenContent>
@@ -90,4 +93,4 @@ const Home: React.FC<Props> = ({ navigation }) => {
   )
 }
 
-export default Home
+export default DemoComponents

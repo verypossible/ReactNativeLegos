@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { animated, useTransition } from 'react-spring'
 import styled from 'styled-components/native'
 
@@ -53,7 +53,7 @@ const Notification: React.FC<NotificationProps> = ({
   })
 
   return (
-    <Fragment>
+    <>
       {showAnimation.map(
         ({ item, key, props }: any) =>
           item && (
@@ -70,7 +70,7 @@ const Notification: React.FC<NotificationProps> = ({
             </AnimatedLayout>
           )
       )}
-    </Fragment>
+    </>
   )
 }
 

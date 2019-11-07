@@ -1,7 +1,13 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Button, ScreenContainer, ScreenContent, Text } from 'ui/components'
+import {
+  Button,
+  Header,
+  HeaderTitle,
+  ScreenContainer,
+  ScreenContent,
+} from 'ui/components'
 
 interface Props {
   navigation: any
@@ -13,20 +19,22 @@ const Layout = styled.View`
   align-items: center;
 `
 
-const NotHome: React.FC<Props> = ({ navigation }) => {
+const DemoFlows: React.FC<Props> = ({ navigation }) => {
   return (
     <ScreenContainer>
+      <Header backgroundColor="transparent">
+        <HeaderTitle title="Flows" />
+      </Header>
+
       <ScreenContent>
         <Layout>
-          <Text>🐈 Meow</Text>
           <Button
             type="border"
             size="small"
-            label="pet the kitty"
-            onPress={() => navigation.navigate('HomeDetail')}
+            label="Log In"
+            onPress={() => navigation.navigate('Auth')}
             style={{
               width: 150,
-              marginTop: 20,
               opacity: 0.25,
             }}
           />
@@ -36,4 +44,4 @@ const NotHome: React.FC<Props> = ({ navigation }) => {
   )
 }
 
-export default NotHome
+export default DemoFlows

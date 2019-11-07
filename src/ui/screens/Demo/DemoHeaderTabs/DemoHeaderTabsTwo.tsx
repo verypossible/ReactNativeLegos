@@ -23,11 +23,11 @@ const Layout = styled.View`
   align-items: center;
 `
 
-const Kitty = styled(Text)`
+const Emoji = styled(Text)`
   font-size: 80;
 `
 
-const AnimatedKitty = posed(Kitty)({
+const AnimatedEmoji = posed(Emoji)({
   from: { rotate: '0deg' },
   to: {
     rotate: '360deg',
@@ -43,7 +43,7 @@ const AnimatedKitty = posed(Kitty)({
   },
 })
 
-const PetTheKitty: React.FC<Props> = ({ navigation }) => {
+const DemoHeaderTabsTwo: React.FC<Props> = ({ navigation }) => {
   const [isAnimating, setAnimating] = useState<boolean>(false)
 
   useEffect(() => {
@@ -52,22 +52,13 @@ const PetTheKitty: React.FC<Props> = ({ navigation }) => {
 
   return (
     <ScreenContainer>
-      <Header>
-        <HeaderAccessory
-          position="left"
-          icon="NavBack"
-          onPress={() => navigation.goBack()}
-        />
-        <HeaderTitle title="You pet the kitty!" />
-      </Header>
-
       <ScreenContent>
         <Layout>
-          <AnimatedKitty pose={isAnimating ? 'to' : 'from'}>😻</AnimatedKitty>
+          <AnimatedEmoji pose={isAnimating ? 'to' : 'from'}>🐶</AnimatedEmoji>
         </Layout>
       </ScreenContent>
     </ScreenContainer>
   )
 }
 
-export default PetTheKitty
+export default DemoHeaderTabsTwo

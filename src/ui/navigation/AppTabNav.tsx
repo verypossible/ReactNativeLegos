@@ -2,24 +2,22 @@ import React from 'react'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 
 import { TabNavItem } from 'ui/components'
-import { HomeTabTwo } from 'ui/screens'
-
-import HomeHeaderTabs from './HomeHeaderTabs'
+import { DemoComponents, DemoFlows } from 'ui/screens'
 
 const Routes = {
   TabOne: {
-    screen: HomeHeaderTabs,
+    screen: DemoComponents,
     navigationOptions: {
       tabBarIcon: ({ focused }: { focused: boolean }) => (
-        <TabNavItem label="TabOne" active={focused} />
+        <TabNavItem label="🦄" active={focused} fontStyle={{ fontSize: 30 }} />
       ),
     },
   },
   TabTwo: {
-    screen: HomeTabTwo,
+    screen: DemoFlows,
     navigationOptions: {
       tabBarIcon: ({ focused }: { focused: boolean }) => (
-        <TabNavItem label="TabTwo" active={focused} />
+        <TabNavItem label="🧙‍♂️" active={focused} fontStyle={{ fontSize: 30 }} />
       ),
     },
   },

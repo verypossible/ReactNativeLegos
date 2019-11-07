@@ -1,8 +1,9 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { NavigationScreenProp } from 'react-navigation'
 import styled from 'styled-components/native'
 
 import Header from './Header'
+import HeaderAccessory from './HeaderAccessory'
 import HeaderTabItem from './HeaderTabItem'
 import HeaderTitle from './HeaderTitle'
 
@@ -20,24 +21,34 @@ const TabContainer = styled.View`
 
 const HeaderTabs: React.FC<HeaderTabsProps> = ({ navigation }) => {
   return (
-    <Fragment>
+    <>
       <Header>
-        <HeaderTitle title="Title" />
+        <HeaderAccessory
+          position="left"
+          icon="NavBack"
+          onPress={() => navigation.goBack()}
+        />
+        <HeaderTitle title="Header w/ Tabs" />
       </Header>
 
       <TabContainer>
         <HeaderTabItem
-          label="Tab One"
+          label="😻"
           isActive={navigation.state.index === 0}
-          onPress={() => navigation.navigate('Potato')}
+          onPress={() => navigation.navigate('HeaderTab1')}
         />
         <HeaderTabItem
-          label="Tab Two"
+          label="🐶"
           isActive={navigation.state.index === 1}
-          onPress={() => navigation.navigate('Two')}
+          onPress={() => navigation.navigate('HeaderTab2')}
+        />
+        <HeaderTabItem
+          label="🦖"
+          isActive={navigation.state.index === 2}
+          onPress={() => navigation.navigate('HeaderTab3')}
         />
       </TabContainer>
-    </Fragment>
+    </>
   )
 }
 
