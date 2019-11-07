@@ -5,6 +5,7 @@ import {
   BottomSheet,
   Button,
   Modal,
+  Notification,
   ScreenContainer,
   ScreenContent,
   Text,
@@ -21,6 +22,7 @@ const Layout = styled.View`
 `
 
 const Home: React.FC<Props> = ({ navigation }) => {
+  const [showNotification, setNotification] = useState<boolean>(false)
   const [showActionSheet, setActionSheet] = useState<boolean>(false)
   const [showModal, setModal] = useState<boolean>(false)
 
@@ -32,10 +34,21 @@ const Home: React.FC<Props> = ({ navigation }) => {
             <Button
               type="border"
               size="small"
+              label="Notification"
+              onPress={() => setNotification(!showNotification)}
+              style={{
+                width: 150,
+                opacity: 0.25,
+              }}
+            />
+            <Button
+              type="border"
+              size="small"
               label="BottomSheet"
               onPress={() => setActionSheet(!showActionSheet)}
               style={{
                 width: 150,
+                marginTop: 20,
                 opacity: 0.25,
               }}
             />
@@ -53,6 +66,13 @@ const Home: React.FC<Props> = ({ navigation }) => {
           </Layout>
         </ScreenContent>
       </ScreenContainer>
+
+      <Notification
+        isVisible={showNotification}
+        close={() => setNotification(!showNotification)}
+      >
+        <Text>Notification</Text>
+      </Notification>
 
       <Modal isVisible={showModal} closeModal={() => setModal(!showModal)}>
         <Text>Modal</Text>
