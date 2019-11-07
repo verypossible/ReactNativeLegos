@@ -2,6 +2,7 @@ import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 
 import AppTabNav from './AppTabNav'
+import HomeHeaderTabs from './HomeHeaderTabs'
 
 import { AuthLogin, HomeDetail } from 'ui/screens'
 

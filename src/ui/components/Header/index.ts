@@ -1,3 +1,5 @@
-export { default as Header } from "./Header";
-export { default as HeaderAccessory } from "./HeaderAccessory";
-export { default as HeaderTitle } from "./HeaderTitle";
+export { default as Header } from './Header'
+export { default as HeaderAccessory } from './HeaderAccessory'
+export { default as HeaderTabItem } from './HeaderTabItem'
+export { default as HeaderTabs } from './HeaderTabs'
+export { default as HeaderTitle } from './HeaderTitle'

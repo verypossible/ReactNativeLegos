@@ -2,11 +2,13 @@ import React from 'react'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 
 import { TabNavItem } from 'ui/components'
-import { HomeTabOne, HomeTabTwo } from 'ui/screens'
+import { HomeTabTwo } from 'ui/screens'
+
+import HomeHeaderTabs from './HomeHeaderTabs'
 
 const Routes = {
   TabOne: {
-    screen: HomeTabOne,
+    screen: HomeHeaderTabs,
     navigationOptions: {
       tabBarIcon: ({ focused }: { focused: boolean }) => (
         <TabNavItem label="TabOne" active={focused} />
