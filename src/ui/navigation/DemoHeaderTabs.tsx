@@ -1,16 +1,11 @@
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs'
 
 import { HeaderTabs } from 'ui/components'
-import {
-  DemoHeaderTabsOne,
-  DemoHeaderTabsThree,
-  DemoHeaderTabsTwo,
-} from 'ui/screens'
+import { DemoHeaderTabsOne, DemoHeaderTabsTwo } from 'ui/screens'
 
 const Routes = {
   HeaderTab1: DemoHeaderTabsOne,
   HeaderTab2: DemoHeaderTabsTwo,
-  HeaderTab3: DemoHeaderTabsThree,
 }
 
 const DemoHeaderTabs = createMaterialTopTabNavigator(Routes, {

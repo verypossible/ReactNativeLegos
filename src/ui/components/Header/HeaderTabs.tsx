@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavigationScreenProp } from 'react-navigation'
+import { animated, useSpring } from 'react-spring'
 import styled from 'styled-components/native'
 
 import Header from './Header'
@@ -7,7 +8,10 @@ import HeaderAccessory from './HeaderAccessory'
 import HeaderTabItem from './HeaderTabItem'
 import HeaderTitle from './HeaderTitle'
 
+import theme from 'ui/theme'
+
 interface HeaderTabsProps {
+  numberOfTabs: number
   navigation: NavigationScreenProp<any, any>
 }
 
@@ -19,7 +23,34 @@ const TabContainer = styled.View`
   height: 50;
 `
 
-const HeaderTabs: React.FC<HeaderTabsProps> = ({ navigation }) => {
+const IndicatorBar = styled.View`
+  width: 100%;
+  height: 4;
+  position: relative;
+  background-color: white;
+`
+
+const Indicator = styled.View`
+  width: ${({ numberOfTabs }: HeaderTabsProps) =>
+    numberOfTabs && theme.screen.width / numberOfTabs};
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+`
+
+const AnimatedIndicator = animated(Indicator)
+
+const HeaderTabs: React.FC<HeaderTabsProps> = ({
+  numberOfTabs = 2,
+  navigation,
+}) => {
+  const routeIndex = navigation.state.index
+  const indicatorAnimation = useSpring({
+    to: { left: routeIndex === 0 ? 0 : theme.screen.width / numberOfTabs },
+  })
+
   return (
     <>
       <Header>
@@ -34,20 +65,22 @@ const HeaderTabs: React.FC<HeaderTabsProps> = ({ navigation }) => {
       <TabContainer>
         <HeaderTabItem
           label="😻"
-          isActive={navigation.state.index === 0}
+          isActive={routeIndex === 0}
           onPress={() => navigation.navigate('HeaderTab1')}
         />
         <HeaderTabItem
           label="🐶"
-          isActive={navigation.state.index === 1}
+          isActive={routeIndex === 1}
           onPress={() => navigation.navigate('HeaderTab2')}
         />
-        <HeaderTabItem
-          label="🦖"
-          isActive={navigation.state.index === 2}
-          onPress={() => navigation.navigate('HeaderTab3')}
-        />
       </TabContainer>
+
+      <IndicatorBar>
+        <AnimatedIndicator
+          numberOfTabs={numberOfTabs}
+          style={indicatorAnimation}
+        />
+      </IndicatorBar>
     </>
   )
 }

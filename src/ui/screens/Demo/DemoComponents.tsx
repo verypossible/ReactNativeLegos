@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import styled from 'styled-components/native'
 
 import {
   BottomSheet,
-  Button,
   Header,
   HeaderTitle,
+  List,
+  ListItem,
   Modal,
   Notification,
   ScreenContainer,
@@ -17,60 +17,39 @@ interface Props {
   navigation: any
 }
 
-const Layout = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`
-
-const DemoButton = styled(Button)`
-  width: 150;
-  margin-top: 15;
-`
-
 const DemoComponents: React.FC<Props> = ({ navigation }) => {
   const [showNotification, setNotification] = useState<boolean>(false)
-  const [showActionSheet, setActionSheet] = useState<boolean>(false)
+  const [showBottomSheet, setBottomSheet] = useState<boolean>(false)
   const [showModal, setModal] = useState<boolean>(false)
 
   return (
     <>
       <ScreenContainer>
-        <Header backgroundColor="transparent">
+        <Header backgroundColor="white">
           <HeaderTitle title="Components" />
         </Header>
 
         <ScreenContent>
-          <Layout>
-            <DemoButton
-              type="border"
-              size="small"
+          <List>
+            <ListItem
               label="Header w/ Tabs"
               onPress={() => navigation.navigate('DemoHeaderTabs')}
             />
-            <DemoButton
-              type="border"
-              size="small"
+            <ListItem
               label="Notification"
               onPress={() => setNotification(!showNotification)}
             />
-            <DemoButton
-              type="border"
-              size="small"
-              label="BottomSheet"
-              onPress={() => setActionSheet(!showActionSheet)}
+            <ListItem
+              label="Bottom Sheet"
+              onPress={() => setBottomSheet(!showBottomSheet)}
             />
-            <DemoButton
-              type="border"
-              size="small"
-              label="Modal"
-              onPress={() => setModal(!showModal)}
-            />
-          </Layout>
+            <ListItem label="Modal" onPress={() => setModal(!showModal)} />
+          </List>
         </ScreenContent>
       </ScreenContainer>
 
       <Notification
+        backgroundColor="red"
         isVisible={showNotification}
         close={() => setNotification(!showNotification)}
       >
@@ -84,8 +63,8 @@ const DemoComponents: React.FC<Props> = ({ navigation }) => {
       <BottomSheet
         height={400}
         hasOverlay={true}
-        isVisible={showActionSheet}
-        close={() => setActionSheet(!showActionSheet)}
+        isVisible={showBottomSheet}
+        close={() => setBottomSheet(!showBottomSheet)}
       >
         <Text>BottomSheet</Text>
       </BottomSheet>
