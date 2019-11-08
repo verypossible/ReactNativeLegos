@@ -32,18 +32,18 @@ const DemoComponents: React.FC<Props> = ({ navigation }) => {
         <ScreenContent>
           <List>
             <ListItem
+              label="Bottom Sheet"
+              onPress={() => setBottomSheet(!showBottomSheet)}
+            />
+            <ListItem
               label="Header w/ Tabs"
               onPress={() => navigation.navigate('DemoHeaderTabs')}
             />
+            <ListItem label="Modal" onPress={() => setModal(!showModal)} />
             <ListItem
               label="Notification"
               onPress={() => setNotification(!showNotification)}
             />
-            <ListItem
-              label="Bottom Sheet"
-              onPress={() => setBottomSheet(!showBottomSheet)}
-            />
-            <ListItem label="Modal" onPress={() => setModal(!showModal)} />
           </List>
         </ScreenContent>
       </ScreenContainer>
