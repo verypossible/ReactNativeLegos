@@ -6,6 +6,11 @@ This repo is welcoming to all UI components that can help get you jamming on the
 
 ### How to jam 🤙
 
+#### Dependencies
+CocoaPods
+`sudo gem install cocoapods`
+
+#### Install Legos
 1. clone this repo
 2. `yarn install`
 3. `cd ios`
