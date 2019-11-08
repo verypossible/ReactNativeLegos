@@ -4,14 +4,7 @@ import styled from 'styled-components/native'
 
 import * as easings from 'd3-ease'
 
-import {
-  Header,
-  HeaderAccessory,
-  HeaderTitle,
-  ScreenContainer,
-  ScreenContent,
-  Text,
-} from 'ui/components'
+import { Button, ScreenContainer, ScreenContent, Text } from 'ui/components'
 
 interface Props {
   navigation: any
@@ -21,10 +14,18 @@ const Layout = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+  position: relative;
 `
 
 const Emoji = styled(Text)`
   font-size: 80;
+`
+
+const Back = styled(Button)`
+  width: 100;
+  position: absolute;
+  bottom: 0;
+  opacity: 0.25;
 `
 
 const AnimatedEmoji = posed(Emoji)({
@@ -55,6 +56,12 @@ const DemoHeaderTabsOne: React.FC<Props> = ({ navigation }) => {
       <ScreenContent>
         <Layout>
           <AnimatedEmoji pose={isAnimating ? 'to' : 'from'}>😻</AnimatedEmoji>
+          <Back
+            size="small"
+            type="border"
+            label="Back"
+            onPress={() => navigation.pop()}
+          />
         </Layout>
       </ScreenContent>
     </ScreenContainer>
