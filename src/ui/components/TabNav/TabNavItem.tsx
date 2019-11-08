@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { Icon } from '../Icon'
+
 interface TabNavItemProps {
-  label?: string
+  icon?: any
   active?: boolean
-  fontStyle?: any
   style?: any
 }
 
@@ -12,25 +13,19 @@ const Layout = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 100%;
-`
-
-const Label = styled.Text`
-  color: black;
-  opacity: ${({ active }: TabNavItemProps) => (active ? 1 : 0.5)};
+  opacity: ${({ active }: TabNavItemProps) => (active ? 1 : 0.85)};
 `
 
 const TabNavItem: React.FC<TabNavItemProps> = ({
-  label,
+  icon,
   active = false,
-  fontStyle,
   style,
 }) => {
   return (
-    <Layout style={style}>
-      <Label active={active} style={fontStyle}>
-        {label}
-      </Label>
+    <Layout active={active} style={style}>
+      <Icon width={40} height={40} fill="rgba(0,0,0,.92)" icon={icon} />
     </Layout>
   )
 }

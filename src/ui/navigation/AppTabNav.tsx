@@ -9,7 +9,7 @@ const Routes = {
     screen: DemoComponents,
     navigationOptions: {
       tabBarIcon: ({ focused }: { focused: boolean }) => (
-        <TabNavItem label="🦄" active={focused} fontStyle={{ fontSize: 30 }} />
+        <TabNavItem icon="NavComponents" active={focused} />
       ),
     },
   },
@@ -17,7 +17,7 @@ const Routes = {
     screen: DemoFlows,
     navigationOptions: {
       tabBarIcon: ({ focused }: { focused: boolean }) => (
-        <TabNavItem label="🧙‍♂️" active={focused} fontStyle={{ fontSize: 30 }} />
+        <TabNavItem icon="NavFlows" active={focused} />
       ),
     },
   },
@@ -30,7 +30,10 @@ const TabBarConfig = {
     showLabel: false,
     showIcon: true,
     style: {
+      height: 60,
       backgroundColor: 'white',
+      borderTopWidth: 0.5,
+      borderTopColor: '#dedede',
     },
   },
 }

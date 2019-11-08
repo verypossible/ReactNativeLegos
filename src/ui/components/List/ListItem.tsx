@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import theme from 'ui/theme'
+import { Icon } from '../Icon'
 import { Text } from '../Typography'
 
 interface ListItemProps {
@@ -12,7 +13,7 @@ interface ListItemProps {
 
 const Layout = styled.TouchableOpacity`
   flex-flow: row nowrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 60;
@@ -24,6 +25,15 @@ const Layout = styled.TouchableOpacity`
 
 const Label = styled(Text)``
 
+const IconContainer = styled.View`
+  justify-content: center;
+  align-items: flex-end;
+  width: 12;
+  height: 100%;
+  margin-left: 20;
+  opacity: 0.92;
+`
+
 const ListItem: React.FC<ListItemProps> = ({ label, onPress, style }) => {
   return (
     <Layout
@@ -32,6 +42,9 @@ const ListItem: React.FC<ListItemProps> = ({ label, onPress, style }) => {
       activeOpacity={theme.button.activeOpacity}
     >
       <Label>{label}</Label>
+      <IconContainer>
+        <Icon width={12} height={12} icon="NavForward" />
+      </IconContainer>
     </Layout>
   )
 }
