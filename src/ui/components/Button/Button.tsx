@@ -4,11 +4,13 @@ import styled from 'styled-components/native'
 import { Text, TouchableOpacity } from 'react-native'
 import theme from 'ui/theme'
 
+const noop = () => {}
+
 interface ButtonProps {
-  size: 'default' | 'small'
   type: 'border' | 'fill' | 'transparent'
   label: string
-  width?: number
+  size?: 'default' | 'small'
+  width?: number | string
   disabled?: boolean
   onPress?: () => void
   style?: any
@@ -28,7 +30,7 @@ const Layout = styled(TouchableOpacity)`
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  width: ${({ width }: ButtonProps) => (width ? width : '100%')};
+  width: ${({ width }: ButtonProps) => width};
   height: ${({ size }: ButtonProps) =>
     size === 'default'
       ? theme.button.height.default
@@ -55,12 +57,12 @@ const Label = styled(Text)`
 
 const Button: React.FC<ButtonProps> = ({
   type,
-  size,
   label,
-  width,
+  size = 'default',
+  width = '100%',
   disabled = false,
-  onPress,
-  style,
+  onPress = noop,
+  style = {},
 }) => {
   return (
     <Layout
@@ -68,9 +70,10 @@ const Button: React.FC<ButtonProps> = ({
       size={size}
       width={width}
       disabled={disabled}
-      onPress={!disabled && onPress}
+      onPress={disabled ? noop : onPress}
       activeOpacity={theme.button.activeOpacity}
       style={style}
+      testID="button"
     >
       <Label type={type} size={size}>
         {label}
