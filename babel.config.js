@@ -6,12 +6,12 @@ module.exports = {
       'module-resolver',
       {
         root: ['./'],
+        extensions: ['.ts', '.tsx'],
         alias: {
-          '^@legos/(.+)': './src/packages/\\1',
-          assets: './assets',
           ui: './src/ui',
-        },
-      },
-    ],
-  ],
+          '@': './src'
+        }
+      }
+    ]
+  ]
 };
