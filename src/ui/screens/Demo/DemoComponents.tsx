@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 import {
   BottomSheet,
@@ -10,46 +10,54 @@ import {
   Notification,
   ScreenContainer,
   ScreenContent,
-  Text,
-} from 'ui/components'
+  Text
+} from 'ui/components';
 
 interface Props {
-  navigation: any
+  navigation: any;
 }
 
 const DemoComponents: React.FC<Props> = ({ navigation }) => {
-  const [showNotification, setNotification] = useState<boolean>(false)
-  const [showBottomSheet, setBottomSheet] = useState<boolean>(false)
-  const [showModal, setModal] = useState<boolean>(false)
+  const [showNotification, setNotification] = useState<boolean>(false);
+  const [showBottomSheet, setBottomSheet] = useState<boolean>(false);
+  const [showModal, setModal] = useState<boolean>(false);
 
   return (
     <>
       <ScreenContainer>
-        <Header backgroundColor="white">
-          <HeaderTitle title="Components" />
+        <Header backgroundColor='white'>
+          <HeaderTitle title='Components' />
         </Header>
 
         <ScreenContent>
           <List>
             <ListItem
-              label="Bottom Sheet"
+              label='Avatar'
+              onPress={() => navigation.navigate('DemoAvatar')}
+            />
+            <ListItem
+              label='Bottom Sheet'
               onPress={() => setBottomSheet(!showBottomSheet)}
             />
             <ListItem
-              label="Header w/ Tabs"
+              label='Header w/ Tabs'
               onPress={() => navigation.navigate('DemoHeaderTabs')}
             />
-            <ListItem label="Modal" onPress={() => setModal(!showModal)} />
+            <ListItem label='Modal' onPress={() => setModal(!showModal)} />
             <ListItem
-              label="Notification"
+              label='Notification'
               onPress={() => setNotification(!showNotification)}
+            />
+            <ListItem
+              label='Controls'
+              onPress={() => navigation.navigate('DemoControls')}
             />
           </List>
         </ScreenContent>
       </ScreenContainer>
 
       <Notification
-        backgroundColor="red"
+        backgroundColor='red'
         isVisible={showNotification}
         close={() => setNotification(!showNotification)}
       >
@@ -69,7 +77,7 @@ const DemoComponents: React.FC<Props> = ({ navigation }) => {
         <Text>BottomSheet</Text>
       </BottomSheet>
     </>
-  )
-}
+  );
+};
 
-export default DemoComponents
+export default DemoComponents;
