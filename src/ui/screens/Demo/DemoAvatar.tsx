@@ -16,6 +16,12 @@ interface Props {
   navigation: any;
 }
 
+const Layout = styled.View`
+  flex: 1;
+  align-items: center;
+  position: relative;
+`;
+
 const AvatarWrap = styled.View`
   flex: 1;
   justify-content: center;
@@ -38,18 +44,20 @@ const DemoAvatar: React.FC<Props> = ({ navigation }) => {
       </Header>
 
       <ScreenContent>
-        <AvatarWrap>
-          <Avatar
-            image={AvatarImage}
-            imageStyle={{ borderRadius: theme.radius.xlarge }}
+        <Layout>
+          <AvatarWrap>
+            <Avatar
+              image={AvatarImage}
+              imageStyle={{ borderRadius: theme.radius.xlarge }}
+            />
+          </AvatarWrap>
+          <Back
+            size='small'
+            type='border'
+            label='Back'
+            onPress={() => navigation.pop()}
           />
-        </AvatarWrap>
-        <Back
-          size='small'
-          type='border'
-          label='Back'
-          onPress={() => navigation.pop()}
-        />
+        </Layout>
       </ScreenContent>
     </ScreenContainer>
   );
