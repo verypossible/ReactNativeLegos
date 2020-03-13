@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import { AppNavigator } from 'ui/navigation'
+import { AppNavigator } from 'ui/navigation';
 
 const App = () => {
-  return <AppNavigator />
-}
+  return <AppNavigator />;
+};
 
-export default App
+export default App;

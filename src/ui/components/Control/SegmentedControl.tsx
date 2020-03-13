@@ -29,7 +29,7 @@ const SegmentedControl: React.FC<SegmentedControlProps> = ({
       enabled={enabled}
       tintColor={tintColor}
       backgroundColor={backgroundColor}
-    ></SegmentedControlIOS>
+    />
   );
 };
 
