@@ -16,7 +16,7 @@ interface ButtonProps {
   style?: any
 }
 
-const getBackgroundColor = ({ type }: ButtonProps) => {
+const getBackgroundColor = ({ type }: LayoutProps) => {
   if (type === 'border') {
     return 'transparent'
   }
@@ -26,33 +26,42 @@ const getBackgroundColor = ({ type }: ButtonProps) => {
   return 'black'
 }
 
-const Layout = styled(TouchableOpacity)`
+interface LayoutProps {
+  type: 'border' | 'fill' | 'transparent'
+  size: 'default' | 'small'
+  width: number | string
+  disabled: boolean
+  onPress: () => void
+  style: any
+}
+
+const Layout = styled(TouchableOpacity)<LayoutProps>`
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  width: ${({ width }: ButtonProps) => width};
-  height: ${({ size }: ButtonProps) =>
+  width: ${({ width }) => width};
+  height: ${({ size }) =>
     size === 'default'
       ? theme.button.height.default
       : theme.button.height.small};
   background: ${getBackgroundColor};
-  border-radius: ${({ size }: ButtonProps) =>
+  border-radius: ${({ size }) =>
     size === 'default'
       ? theme.button.height.default / 2
       : theme.button.height.small / 2};
-  border-width: ${({ type }: ButtonProps) => (type === 'border' ? 1.25 : 0)};
-  border-color: ${({ type }: ButtonProps) =>
+  border-width: ${({ type }) => (type === 'border' ? 1.25 : 0)};
+  border-color: ${({ type }) =>
     type === 'transparent' ? 'transparent' : 'black'};
-  opacity: ${({ disabled }: ButtonProps) => (disabled ? 0.25 : 1)};
+  opacity: ${({ disabled }) => (disabled ? 0.25 : 1)};
 `
 
-const Label = styled(Text)`
+const Label = styled(Text)<Partial<ButtonProps>>`
   align-self: center;
   font-family: ${theme.font.ui.bold};
-  font-size: ${({ size }: ButtonProps) =>
+  font-size: ${({ size }) =>
     size === 'default' ? theme.font.size.default : theme.font.size.small};
   text-align: center;
-  color: ${({ type }: ButtonProps) => (type === 'fill' ? 'white' : 'black')};
+  color: ${({ type }) => (type === 'fill' ? 'white' : 'black')};
 `
 
 const Button: React.FC<ButtonProps> = ({
