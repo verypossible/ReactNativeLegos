@@ -14,6 +14,12 @@ interface Props {
   navigation: any;
 }
 
+const Layout = styled.View`
+  flex: 1;
+  align-items: center;
+  position: relative;
+`;
+
 const Text = styled.Text`
   font-size: 16px;
   font-weight: 500;
@@ -21,6 +27,7 @@ const Text = styled.Text`
 `;
 
 const View = styled.View`
+  width: 95%;
   margin: 20px 16px;
 `;
 
@@ -39,21 +46,18 @@ const DemoControls: React.FC<Props> = ({ navigation }) => {
       </Header>
 
       <ScreenContent>
-        <View style={{ marginBottom: 10 }}>
-          <Text>Segmented Controls</Text>
-          <SegmentedControl
-            values={['Option 1', 'Option 2', 'Option 3']}
-            selectedIndex={0}
-            tintColor='#155AEE'
-            backgroundColor='#FFFFFF'
+        <Layout>
+          <View style={{ marginBottom: 10 }}>
+            <Text>Segmented Controls</Text>
+            <SegmentedControl values={['First', 'Second', 'Third']} />
+          </View>
+          <Back
+            size='small'
+            type='border'
+            label='Back'
+            onPress={() => navigation.pop()}
           />
-        </View>
-        <Back
-          size='small'
-          type='border'
-          label='Back'
-          onPress={() => navigation.pop()}
-        />
+        </Layout>
       </ScreenContent>
     </ScreenContainer>
   );

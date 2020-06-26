@@ -11,6 +11,7 @@ const theme = {
   },
 
   color: {
+    primary: 'rgb(29, 21, 237)',
     white: 'rgb(255,255,255)'
   },
 
