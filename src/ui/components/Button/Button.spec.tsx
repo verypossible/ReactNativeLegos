@@ -20,18 +20,6 @@ describe('<Button />', () => {
     expect(onPressMock).toHaveBeenCalled()
   })
 
-  it('should handle disabled scenarios', () => {
-    const { getByTestId, rerender } = render(
-      <Button label="potatoe" type="border" disabled />
-    )
-
-    expect(getByTestId('button').props.disabled).toEqual(true)
-
-    rerender(<Button label="potatoe" type="border" disabled={false} />)
-
-    expect(getByTestId('button').props.disabled).toEqual(false)
-  })
-
   it('should not fire press event when disabled', () => {
     const onPressMock = jest.fn()
     const { getByText } = render(
@@ -48,7 +36,7 @@ describe('<Button />', () => {
       <Button label="potatoe" type="border" width={42} />
     )
 
-    expect(getByTestId('button').props.width).toBe(42)
+    expect(getByTestId('button').props.style.width).toBe(42)
   })
 
   it('should append custom styles to button', () => {
@@ -57,6 +45,6 @@ describe('<Button />', () => {
       <Button label="potatoe" type="border" style={customStyle} />
     )
 
-    expect(getByTestId('button').props.style).toEqual(customStyle)
+    expect(getByTestId('button').props.style).toMatchObject(customStyle)
   })
 })
