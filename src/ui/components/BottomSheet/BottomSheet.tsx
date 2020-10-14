@@ -61,9 +61,9 @@ const BottomSheet: React.FC<BottomSheetProps> = ({
   height = 400,
   hasOverlay = false,
   isVisible = false,
-  close,
-  children,
-  style,
+  close = () => {},
+  children = null,
+  style = {},
 }) => {
   const sheetTransition = useTransition(isVisible, null, {
     from: { bottom: -height },
@@ -82,8 +82,17 @@ const BottomSheet: React.FC<BottomSheetProps> = ({
       {sheetTransition.map(
         ({ item, key, props }: any) =>
           item && (
-            <AnimatedLayout key={key} height={height} style={[style, props]}>
-              <Close activeOpacity={theme.button.activeOpacity} onPress={close}>
+            <AnimatedLayout
+              key={key}
+              height={height}
+              style={[style, props]}
+              testID="sheet-container"
+            >
+              <Close
+                activeOpacity={theme.button.activeOpacity}
+                onPress={close}
+                testID="close-button"
+              >
                 <Grabber />
               </Close>
               <Content>{children}</Content>
@@ -94,7 +103,7 @@ const BottomSheet: React.FC<BottomSheetProps> = ({
       {hasOverlay &&
         overlayTransition.map(
           ({ item, key, props }: any) =>
-            item && <AnimatedOverlay key={key} style={props} />
+            item && <AnimatedOverlay key={key} style={props} testID="overlay" />
         )}
     </>
   )
