@@ -1911,10 +1911,10 @@
     "@typescript-eslint/types" "4.14.2"
     eslint-visitor-keys "^2.0.0"
 
-"@verypossible/eslint-config@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@verypossible/eslint-config/-/eslint-config-1.0.1.tgz#d0816838d49397517fd6b47b5fa842d720a59fe8"
-  integrity sha512-xqw47rIV3idnD8WVGCiEi5mg/U4kIFv0U2L4u/vIcjStjJvjSOH2yAb1b6fyfkwG6+Zl8ES2ehRDPw2XWFnlSA==
+"@verypossible/eslint-config@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@verypossible/eslint-config/-/eslint-config-1.0.2.tgz#ff6037c9ecfa0bbeee6b46ae8fd44ce1e9d9b275"
+  integrity sha512-ycCxOmObXTcIjROqOd+TlCxsAl4nCKSnPuloeRcmNSONCN6bp7SAVrMz/b4OHGe+dYVXKK8Kr8nQkE9sEMXp8g==
   dependencies:
     "@babel/eslint-parser" "^7.12.1"
     "@babel/eslint-plugin" "^7.12.1"

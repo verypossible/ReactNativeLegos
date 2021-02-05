@@ -1,9 +1,6 @@
 module.exports = {
   extends: ['@verypossible/eslint-config/native'],
   plugins: ['import'],
-  env: {
-    node: true,
-  },
   settings: {
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
